@@ -1,0 +1,59 @@
+<odoo>
+    <record id="patient_view_form" model="ir.ui.view">
+        <field name="name">patient.view.form</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group string="Personal Info">
+                        <field name="first_name"/>
+                        <field name="last_name"/>
+                        <field name="birth_date"/>
+                        <field name="history"/>
+                        <field name="image" widget="image" options='{"size": [50, 50]}'/>
+                        <field name="address"/>
+                        <field name="age"/>
+                    </group>
+                    <group string="Medical Info">
+                        <field name="cr_ratio"/>
+                        <field name="blood_type"/>
+                        <field name="pcr"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="patient_view_tree" model="ir.ui.view">
+        <field name="name">patient.view.tree</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="name"/>
+                <field name="address"/>
+                <field name="age"/>
+                <field name="cr_ratio"/>
+                <field name="image" widget="image" options='{"size": [20, 20]}'/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_list_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hms.patient</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="action_add_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hms.patient</field>
+        <field name="view_mode">form</field>
+    </record>
+    <menuitem id="hms_patient_menu_list"
+              name="Patients List"
+              parent="hms_patient_menu"
+              action="action_list_patient"
+    />
+    <menuitem id="hms_patient_menu_add"
+              name="Add Patient"
+              parent="hms_patient_menu"
+              action="action_add_patient"
+    />
+</odoo>
